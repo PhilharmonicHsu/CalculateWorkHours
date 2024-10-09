@@ -3,10 +3,10 @@
 * - https://medium.com/@Hsu.Yang-Min/apps-script-%E9%96%8B%E7%99%BC%E7%9A%84%E5%B0%8F%E5%B9%AB%E6%89%8B-cd1f15eb722b
 * - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 */
+const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbySZ-gCqT6jK7kc-tu0LVAWW_o9oK2r44-syZitre_NlrbAfgaWdo2Ns-xMkOGJhyRj/exec";
+
 async function getData() {
-    const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbySZ-gCqT6jK7kc-tu0LVAWW_o9oK2r44-syZitre_NlrbAfgaWdo2Ns-xMkOGJhyRj/exec"
-    );
+    const res = await fetch(APP_SCRIPT_URL);
     const events = await res.json();
 
     let totalHours = 0;
@@ -34,12 +34,12 @@ async function getData() {
 
 async function getPostData() {
     const params = {
-        timeMin: "2024-09-01T00:00:00-07:00",
+        timeMin: '2024-09-01T00:00:00-07:00',
         timeMax: '2024-10-31T23:59:59-07:00'
     }
 
     const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbxY_LueK2Ovj5-chBOi-kQCcYKa8LMXFf5MoAvWsbezYNP5JsuJtDD1c6L2k2dPCwP7/exec",
+        APP_SCRIPT_URL,
         {
             method: 'POST',
             body: JSON.stringify(params),
