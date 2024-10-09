@@ -9,7 +9,7 @@ function doGet() {
         singleEvents: true,
         orderBy: 'startTime',
         timeMin: '2024-09-01T00:00:00-07:00',
-        timeMax: '2024-10-31T00:00:00-07:00',
+        timeMax: '2024-09-22T00:00:00-07:00',
     };
 
     try {
@@ -32,14 +32,15 @@ function doGet() {
     }
 }
 
-function doPost(postPackage) {
+function doPost(e) {
+    const postData = JSON.parse(e.postData.contents)
     const calendarId = 'primary';
     const optionalArgs = {
         showDeleted: false,
         singleEvents: true,
         orderBy: 'startTime',
-        timeMin: postPackage.postData.timeMin,
-        timeMax: postPackage.postData.timeMax,
+        timeMin: postData.timeMin,
+        timeMax: postData.timeMax,
     };
 
     try {
